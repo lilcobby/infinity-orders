@@ -1,21 +1,34 @@
 // need to add everything we need for our user typedef
 
 const typeDefs = `
-type Profile {
+type Order {
+  image: String
+  name: String
+}
+
+type Lists {
   _id: ID
-  firstName: String
-  lastName: String
+  name: String
+  orders: [Order]
+  wins: Int
+  losses: Int
+
+}
+
+type UserDetails {
+  _id: ID
   userName: String
   email: String
+  lists: [Lists]
  
 
 }
 type Auth {
   token: ID!
-  user: Profile
+  user: UserDetails
 }
 type Query {
-  getOwnProfile: Profile
+  getUser: UserDetails
 }
 type Mutation {
    addUser(userName: String!, email: String!, password: String!): Auth

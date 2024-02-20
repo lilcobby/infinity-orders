@@ -1,0 +1,43 @@
+[
+  {
+    "userName": "user1",
+    "email": "user1@example.com",
+    "password": "password1",
+    "lists": [
+      {
+        "name": "List 1",
+        "orders": [
+          { "image": "image1.jpg", "name": "Order 1" },
+          { "image": "image2.jpg", "name": "Order 2" }
+        ],
+        "wins": 5,
+        "losses": 2
+      },
+      {
+        "name": "List 2",
+        "orders": [
+          { "image": "image3.jpg", "name": "Order 3" },
+          { "image": "image4.jpg", "name": "Order 4" }
+        ],
+        "wins": 3,
+        "losses": 1
+      }
+    ]
+  },
+  {
+    "userName": "user2",
+    "email": "user2@example.com",
+    "password": "password2",
+    "lists": [
+      {
+        "name": "List 3",
+        "orders": [
+          { "image": "image5.jpg", "name": "Order 5" },
+          { "image": "image6.jpg", "name": "Order 6" }
+        ],
+        "wins": 2,
+        "losses": 4
+      }
+    ]
+  }
+]

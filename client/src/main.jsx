@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import App from "./App.jsx";
 import Home from "./pages/Home";
-
+import Login from "./pages/Login";
+import List from "./pages/List";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
         element: <Home />,
       },
 
-    
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      { path: "/lists", element: <List /> },
     ],
   },
 ]);

@@ -3,8 +3,18 @@ const { User, Message } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
-  //   Query: {},
+  Query: {
+    getUser: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findById({ _id: context.user._id });
+        console.log(userData);
+        // to check if array is populating properly
+        return userData;
+      }
+    },
+  },
   Mutation: {
+    
     addUser: async (parent, { userName, email, password }) => {
       const user = await User.create({ userName, email, password });
       const token = signToken(user);
@@ -30,6 +40,6 @@ const resolvers = {
     },
   },
 };
-// module.exports = resolvers;
+module.exports = resolvers;
 
 // new comment for testing

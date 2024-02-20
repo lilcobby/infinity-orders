@@ -2,7 +2,6 @@ import { useContext } from "react";
 
 import Auth from "../utils/auth";
 
-
 const NavBar = () => {
   const handleLogout = () => {
     Auth.logout();
@@ -14,7 +13,7 @@ const NavBar = () => {
         <nav>
           <ul className="nav_links">
             <li>
-              <a href="/profile">Profile</a>
+              <a href="/lists">Lists</a>
             </li>
             <li>
               <a href="/settings">Settings</a>
@@ -33,7 +32,7 @@ const NavBar = () => {
       <nav>
         <ul className="nav_links">
           <li>
-            <a href="/profile">Profile</a>
+            <a href="/lists">Lists</a>
           </li>
           <li>
             <a href="/settings">Settings</a>

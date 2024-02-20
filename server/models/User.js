@@ -2,7 +2,6 @@ const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const userSchema = new Schema({
-
   userName: {
     type: String,
     required: true,
@@ -20,7 +19,14 @@ const userSchema = new Schema({
     required: true,
     trim: true,
   },
-
+  lists: [
+    {
+      name: { type: String },
+      orders: [{ image: { type: String }, name: { type: String } }],
+      wins: { type: Number },
+      losses: { type: Number },
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {

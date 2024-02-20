@@ -1,13 +1,21 @@
 import { gql } from "@apollo/client";
 
-export const GET_OWN_PROFILE = gql`
-  query getOwnProfile {
-    getOwnProfile {
+export const GET_USER = gql`
+  query getUser {
+    getUser {
       _id
-      firstName
-      lastName
       userName
       email
+      lists {
+        _id
+        name
+        orders {
+          image
+          name
+        }
+        wins
+        losses
+      }
     }
   }
 `;
