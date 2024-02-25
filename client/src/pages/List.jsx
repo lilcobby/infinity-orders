@@ -1,6 +1,7 @@
 import { GET_USER } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
+import OrderForm from "../components/CreateList";
 
 const List = () => {
   const { loading, data } = useQuery(GET_USER);
@@ -20,17 +21,20 @@ const List = () => {
             <h2>List Name: {list.name}</h2>
             <p>Wins: {list.wins}</p>
             <p>Losses: {list.losses}</p>
-            <h3>Orders:</h3>
+            <button>play button</button>
+            <button>delete button</button>
+            {/* <h3>Orders:</h3>
             <ul>
               {list.orders.map((order) => (
                 <li key={order.name}>
                   Order Name: {order.name}, {order.image}
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         ))}
       </div>
+      <OrderForm />
     </div>
   );
 };
