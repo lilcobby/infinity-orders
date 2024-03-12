@@ -22,9 +22,7 @@ const userSchema = new Schema({
   lists: [
     {
       name: { type: String },
-      orders: [{ image: { type: String }, name: { type: String } }],
-      wins: { type: Number },
-      losses: { type: Number },
+      orders: [{ image: { type: String } }],
     },
   ],
 });

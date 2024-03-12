@@ -3,7 +3,7 @@
 const typeDefs = `
 type Order {
   image: String
-  name: String
+  
 }
 
 type Lists {

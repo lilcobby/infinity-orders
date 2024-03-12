@@ -11,10 +11,9 @@ export const GET_USER = gql`
         name
         orders {
           image
-          name
+          
         }
-        wins
-        losses
+        
       }
     }
   }

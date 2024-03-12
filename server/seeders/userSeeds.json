@@ -6,21 +6,11 @@
     "lists": [
       {
         "name": "List 1",
-        "orders": [
-          { "image": "image1.jpg", "name": "Order 1" },
-          { "image": "image2.jpg", "name": "Order 2" }
-        ],
-        "wins": 5,
-        "losses": 2
+        "orders": [{ "image": "order3" }, { "image": "order4" }]
       },
       {
         "name": "List 2",
-        "orders": [
-          { "image": "image3.jpg", "name": "Order 3" },
-          { "image": "image4.jpg", "name": "Order 4" }
-        ],
-        "wins": 3,
-        "losses": 1
+        "orders": [{ "image": "order1" }, { "image": "order2" }]
       }
     ]
   },
@@ -31,12 +21,7 @@
     "lists": [
       {
         "name": "List 3",
-        "orders": [
-          { "image": "image5.jpg", "name": "Order 5" },
-          { "image": "image6.jpg", "name": "Order 6" }
-        ],
-        "wins": 2,
-        "losses": 4
+        "orders": [{ "image": "order3" }, { "image": "order4" }]
       }
     ]
   }

@@ -18,7 +18,6 @@ function OrderForm() {
     newList.splice(index, 1);
     setOrderList(newList);
   };
-  
 
   return (
     <div>
@@ -35,7 +34,6 @@ function OrderForm() {
             >
               <option value="image1">Image 1</option>
               <option value="image2">Image 2</option>
-             
             </select>
             <input type="text" value={order.image} />
             <button type="button" onClick={() => handleDeleteOrder(index)}>

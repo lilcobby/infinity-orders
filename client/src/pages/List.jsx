@@ -19,18 +19,18 @@ const List = () => {
         {user.lists.map((list) => (
           <div key={list._id}>
             <h2>List Name: {list.name}</h2>
-            <p>Wins: {list.wins}</p>
-            <p>Losses: {list.losses}</p>
+            <h3>{list.orders.name}</h3>
             <button>play button</button>
             <button>delete button</button>
-            {/* <h3>Orders:</h3>
+            <h3>Orders:</h3>
             <ul>
               {list.orders.map((order) => (
-                <li key={order.name}>
-                  Order Name: {order.name}, {order.image}
+                <li key={order.image}>
+                  Order image: {order.image}
+                  <img src={`/assets/${order.image}.png`} alt="order" />
                 </li>
               ))}
-            </ul> */}
+            </ul>
           </div>
         ))}
       </div>
