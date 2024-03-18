@@ -14,7 +14,6 @@ const resolvers = {
     },
   },
   Mutation: {
-    
     addUser: async (parent, { userName, email, password }) => {
       const user = await User.create({ userName, email, password });
       const token = signToken(user);
@@ -37,6 +36,30 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addList: async (parent, { name }, context) => {
+      const currentUser = context.user;
+      const updatedUser = await User.findByIdAndUpdate(
+        currentUser._id,
+        { $addToSet: { Lists: name } },
+        { new: true }
+      );
+
+      console.log("this is current", currentUser);
+      console.log("this is updated user", updatedUser);
+      return updatedUser;
+    },
+    addOrder: async (parent, { listId, image }, context) => {
+      try {
+        const currentUser = context.user;
+        const user = await User.findById(currentUser._id);
+        const newList = user.lists.find((list) => list._id.equals(listId));
+        newList.orders.push({ image });
+        const updatedUser = await user.save();
+        return updatedUser;
+      } catch (error) {
+        throw new Error(`Failed to add order: ${error.message}`);
+      }
     },
   },
 };

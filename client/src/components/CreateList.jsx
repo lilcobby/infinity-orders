@@ -3,8 +3,10 @@ import React, { useState } from "react";
 function OrderForm() {
   const [orderList, setOrderList] = useState([]);
 
+  const [listName, setListName] = useState("");
+
   const handleAddOrder = () => {
-    setOrderList([...orderList, { image: "", selectedImage: "image1" }]);
+    setOrderList([...orderList, { image: "", selectedImage: "orderImage" }]);
   };
 
   const handleImageChange = (index, event) => {
@@ -18,12 +20,19 @@ function OrderForm() {
     newList.splice(index, 1);
     setOrderList(newList);
   };
+  const handleListNameChange = (event) => {
+    setListName(event.target.value);
+  };
 
   return (
     <div>
       <h2>Order Form</h2>
-      <input type="text" value="placeholder for list name" />
-      <button onClick={handleAddOrder}>Add Order</button>
+      <input
+        type="text"
+        value={listName}
+        onChange={handleListNameChange}
+        placeholder="Enter list name"
+      />
 
       <form>
         {orderList.map((order, index) => (
@@ -32,10 +41,13 @@ function OrderForm() {
               value={order.selectedImage}
               onChange={(event) => handleImageChange(index, event)}
             >
-              <option value="image1">Image 1</option>
-              <option value="image2">Image 2</option>
+              <option value="regular">regular</option>
+              <option value="irregular">irregular</option>
+              <option value="impetuous">impetuous</option>
+              <option value="lieutenant">lieutenant</option>
+              <option value="commandToken">commandToken</option>
             </select>
-            <input type="text" value={order.image} />
+
             <button type="button" onClick={() => handleDeleteOrder(index)}>
               Delete
             </button>
@@ -43,6 +55,7 @@ function OrderForm() {
         ))}
         <button type="submit">Submit</button>
       </form>
+      <button onClick={handleAddOrder}>Add Order</button>
     </div>
   );
 }

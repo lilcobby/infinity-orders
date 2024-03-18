@@ -26,3 +26,21 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+export const ADD_LIST = gql`
+  mutation addList($name: String!) {
+    addList(name: $name) {
+      orders {
+        image
+      }
+    }
+  }
+`;
+export const ADD_ORDER = gql`
+  mutation addOrder($listId: ID!, $image: String!) {
+    addOrder(listId: $listId, image: $image) {
+      orders {
+        image
+      }
+    }
+  }
+`;

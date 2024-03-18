@@ -10,10 +10,9 @@ export const GET_USER = gql`
         _id
         name
         orders {
+          _id
           image
-          
         }
-        
       }
     }
   }
