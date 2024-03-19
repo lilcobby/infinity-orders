@@ -2,13 +2,20 @@ import { useState } from "react";
 import { GET_USER } from "../utils/queries";
 import { useQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
-import { ADD_ORDER } from "../utils/mutations";
+import { ADD_ORDER, DELETE_ORDER } from "../utils/mutations";
 
 const List = () => {
-  const { loading, data, refetch } = useQuery(GET_USER);
+  const { loading, data, refetch } = useQuery(GET_USER, {
+    fetchPolicy: "network-only",
+  });
   const user = data?.getUser || {};
   const [selectedImage, setSelectedImage] = useState("regular");
   const [addOrder] = useMutation(ADD_ORDER, {
+    onCompleted: () => {
+      refetch();
+    },
+  });
+  const [deleteOrder] = useMutation(DELETE_ORDER, {
     onCompleted: () => {
       refetch();
     },
@@ -23,6 +30,10 @@ const List = () => {
 
   const handleAddOrder = async (listId) => {
     addOrder({ variables: { listId, image: selectedImage } });
+  };
+
+  const handleDeleteOrder = async (listId, orderId) => {
+    await deleteOrder({ variables: { listId, orderId } });
   };
 
   const handleImageChange = (event) => {
@@ -41,13 +52,19 @@ const List = () => {
             <h3>Orders:</h3>
             <ul>
               {list.orders.map((order) => (
-                <li key={order.image}>
+                <li key={order._id}>
                   {order.image}
                   <img
                     src={`/assets/${order.image}.jpg`}
                     alt="order"
                     className="image"
                   />
+                  <button
+                    onClick={() => handleDeleteOrder(list._id, order._id)}
+                  >
+                    Delete
+                  </button>
+                  <div>`${order._id}`</div>
                 </li>
               ))}
             </ul>

@@ -36,7 +36,7 @@ type Mutation {
   login(email: String!, password: String!): Auth
   addList(name: String!): List
   addOrder(listId: ID!, image: String!): List
-  deleteOrder(_id: ID!): Order
+  deleteOrder(listId: ID!, orderId: ID!): List
 
 }
 `;

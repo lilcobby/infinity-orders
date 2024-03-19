@@ -44,3 +44,12 @@ export const ADD_ORDER = gql`
     }
   }
 `;
+export const DELETE_ORDER = gql`
+  mutation deleteOrder($listId: ID!, $orderId: ID!) {
+    deleteOrder(listId: $listId, orderId: $orderId) {
+      orders {
+        _id
+      }
+    }
+  }
+`;

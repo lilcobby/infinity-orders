@@ -7,7 +7,7 @@ const resolvers = {
     getUser: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findById({ _id: context.user._id });
-        console.log(userData);
+
         // to check if array is populating properly
         return userData;
       }
@@ -45,8 +45,6 @@ const resolvers = {
         { new: true }
       );
 
-      console.log("this is current", currentUser);
-      console.log("this is updated user", updatedUser);
       return updatedUser;
     },
     addOrder: async (parent, { listId, image }, context) => {
@@ -59,6 +57,24 @@ const resolvers = {
         return updatedUser;
       } catch (error) {
         throw new Error(`Failed to add order: ${error.message}`);
+      }
+    },
+    deleteOrder: async (parent, { listId, orderId }, context) => {
+      try {
+        const currentUser = context.user;
+        const user = await User.findById(currentUser._id);
+        const newList = user.lists.find((list) => list._id.equals(listId));
+
+        // Filter out the order with the specified orderId
+        newList.orders = newList.orders.filter(
+          (order) => !order._id.equals(orderId)
+        );
+
+        await user.save();
+
+        return currentUser;
+      } catch (error) {
+        throw new Error(`Failed to delete order: ${error.message}`);
       }
     },
   },
